@@ -1,0 +1,35 @@
+<div *ngIf="checked" style="width: 80%;">
+  <canvas
+      baseChart
+      [chartType]="'line'"
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="true"
+      [colors]="lineChartColors"
+      (chartClick)="onChartClick($event)">
+  </canvas>
+</div>
+
+<div *ngIf="checked"  class="col-md-6" style="margin-bottom: 10px">
+
+    <table border='1'>  
+  
+        <tr>  
+          <td>Date</td>  
+          <td>Price</td>  
+          <td>Red Price</td>  
+          <td>Blue Price</td>  
+        </tr>  
+        <tr *ngFor="let item of chartData[0]['data'];let ind = index">  
+             
+          <td>{{chartLabels[ind]}}</td>  
+          <td>{{chartData[0]['data'][ind]}}</td>  
+          <td style="color:rgb(226, 43, 52)" >{{chartData[1]['data'][ind]}}</td>  
+          <td style="color:rgb(43, 116, 226)" >{{chartData[2]['data'][ind]}}</td>  
+        </tr>  
+      </table>  
+
+</div>
+
+<button (click)="showPlot()">Show</button>
